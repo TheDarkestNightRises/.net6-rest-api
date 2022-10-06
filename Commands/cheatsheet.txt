@@ -1,0 +1,11 @@
+dotnet new webapi -n Catalogue
+dotnet add package MongoDB.Driver
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
+docker volume ls
+docker delete
+docker volume rm mongodbdata
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db 
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=Passw#rd1  mongo
+
+dotnet user-secrets init
+dotnet user-secrets set MongoDbSettings:Password Passw#rd1
