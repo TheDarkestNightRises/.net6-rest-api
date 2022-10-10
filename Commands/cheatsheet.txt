@@ -1,3 +1,9 @@
+s###Secrets
+dotnet user-secrets init
+dotnet user-secrets set MongoDbSettings:Password Passw#rd1
+
+##docker
+
 dotnet new webapi -n Catalogue
 dotnet add package MongoDB.Driver
 docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
@@ -5,7 +11,8 @@ docker volume ls
 docker delete
 docker volume rm mongodbdata
 docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db 
--e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=Passw#rd1  mongo
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=Passw#rd1 --network=net5tutorial mongo
 
-dotnet user-secrets init
-dotnet user-secrets set MongoDbSettings:Password Passw#rd1
+
+CTRL SHIFT P > DOCKER ADD FILES TO WORKSPACE. if you are using the vscode plugin
+docker network create
